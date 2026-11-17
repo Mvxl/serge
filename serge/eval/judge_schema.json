@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "factual_accuracy",
+    "completeness",
+    "no_hallucination",
+    "reasoning",
+    "weighted_score",
+    "pass",
+    "critical_facts_present",
+    "same_conclusion_as_ground_truth",
+    "failure_category",
+    "justification",
+    "facts_found",
+    "facts_missing",
+    "hallucinations"
+  ],
+  "properties": {
+    "factual_accuracy":  { "type": "number", "minimum": 1, "maximum": 5 },
+    "completeness":      { "type": "number", "minimum": 1, "maximum": 5 },
+    "no_hallucination":  { "type": "number", "minimum": 1, "maximum": 5 },
+    "reasoning":         { "type": "number", "minimum": 1, "maximum": 5 },
+    "weighted_score":    { "type": "number", "minimum": 1, "maximum": 5 },
+    "pass":              { "type": "boolean" },
+    "critical_facts_present": { "type": "boolean" },
+    "same_conclusion_as_ground_truth": { "type": "boolean" },
+    "failure_category": {
+      "type": "string",
+      "enum": ["none", "missed_fact", "wrong_value", "hallucination", "bad_reasoning", "refused"]
+    },
+    "justification":     { "type": "string" },
+    "facts_found":       { "type": "array", "items": { "type": "string" } },
+    "facts_missing":     { "type": "array", "items": { "type": "string" } },
+    "hallucinations":    { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
